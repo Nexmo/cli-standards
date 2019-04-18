@@ -97,8 +97,6 @@ The above shows a basic template to use as a starting point
 
 * **`topic`** will usually be a plural noun. Examples could include `applications`, `numbers`, `insights`.
 * **`command`** will usually be an active or imperative verb. Examples could include `create`, `list`, `configure`.
-* For more complex areas, add a **subtopic** with the format `topic:subtopic:command`. Examples could include `accounts:jwt:generate`, `applications:numbers:link`.
-* All input will be supplied with clearly-named flags each followed by the value for this parameter. The parameters will use "kebab case" and will be named exactly the same when different commands accept the same input data. Examples could include `--number`, `--application`, `--event_url`.
 * If a command can only accept one input parameter, it may be supplied without flags, as an additional shorthand to the standard named-flag approach.
 
 The tool will support autocomplete so verbose is better. 
@@ -107,7 +105,7 @@ The tool will support autocomplete so verbose is better.
 
 **All commands must be available in non-interactive mode** to enable the tool to be used in automation.
 
-For users who are not familiar with the tool, the tool offer interactive prompts for the parameters that a command supports. So for example using `number:search` without any further commands causes the tool to prompt the user for a country code (probably with a link to codes list, this might not be a great example!) and then offer the optional parameters with the option to accept the defaults.
+For users who are not familiar with the tool, the tool offer interactive prompts for the parameters that a command supports. So for example using `number:search` without any further commands causes the tool to prompt the user for a country code (probably with a link to codes list, this might not be a great example!) and then offer the optional parameters with the option to accept the defaults. The tool should only go to interactive mode if the command is incomplete and would result in an error.
 
 ## Output Format
 
@@ -162,7 +160,6 @@ When an error occurs, either in the CLI or in the underlying API response, the t
 
 * return an error exit status
 * show the detail of any error from the API
-* add any additional explanation, links or other references to explain to the user what went wrong or what they should do next
 
 **Debug Mode**
 
@@ -185,6 +182,7 @@ The tool must have autocomplete for:
  * _[must have]_ topics, subtopics and commands
  * _[must have]_ argument flags
  * _[nice to have]_ known values such as application IDs
+ * _[nice to have]_ suggested commands when similar/typos are supplied
 
 ### Beyond the CLI
 
